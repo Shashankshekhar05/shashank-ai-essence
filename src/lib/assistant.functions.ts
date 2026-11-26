@@ -21,7 +21,7 @@ const ChatInput = z.object({
 });
 
 export const askPortfolioAssistant = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => ChatInput.parse(input))
+  .validator((input: unknown) => ChatInput.parse(input))
   .handler(async ({ data }): Promise<AssistantReply> => {
     const {
       buildSystemPrompt,

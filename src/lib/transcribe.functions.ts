@@ -24,7 +24,7 @@ const EXTENSIONS: Record<string, string> = {
 };
 
 export const transcribeQuestion = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => TranscribeInput.parse(input))
+  .validator((input: unknown) => TranscribeInput.parse(input))
   .handler(async ({ data }): Promise<TranscriptionReply> => {
     const apiKey = process.env["GROQ_API_KEY"];
     if (!apiKey) {
